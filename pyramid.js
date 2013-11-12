@@ -44,31 +44,35 @@ function master()
 	deadend1='You find a deep, dark staircase spiraling down into inky blackness. You can see that the stairs end, crumbling off into the abyss. It\'s impossible to go any further.';
 	deadend2='You see the outside for the first time. It\'s a beautiful vista from where you are, but you can\'t go any further.';
 
-if (playerName===''){
-document.getElementById('outputDiv').innerHTML='Please type your name into the box.';
+	if (playerName===''){
+		document.getElementById('outputDiv').innerHTML='Please type your name into the box.';
+	}
+	else {
+		document.getElementById('gameStart').style.display = 'none'; //hides nameBox and CONFIRM button
+		document.getElementById('gameControls').style.display = 'block'; //shows gameControls when CONFIRM and playerName is given		
+		
+		document.getElementById('outputDiv').innerHTML=room1;
+		
+		if (fflag == true){
+			document.getElementById('outputDiv').innerHTML=room2;
+		}
+		if (lflag == true){
+			document.getElementById('outputDiv').innerHTML=room3;
+		}
+		if (rflag == true){
+			document.getElementById('outputDiv').innerHTML=death1;
+		}
+	}
 }
-else {
 
-document.getElementById('confirm').style.display = 'none'; //hides CONFIRM button if name has been inputted
-
-
-	
-document.getElementById('outputDiv').innerHTML=room1;
-if (fflag == true){
-document.getElementById('outputDiv').innerHTML=room2;
-}
-if (lflag == true){
-document.getElementById('outputDiv').innerHTML=room3;
-}
-if (rflag == true){
-document.getElementById('outputDiv').innerHTML=death1;
-}
-}
-}
-
-function help()
+function help(x)
 {
-alert('Enter your name in the box above and click "CONFIRM" to start. Then click the appropriate button for your choice.');
+	if (x===0) {	
+		alert('Enter your name in the box above and click "CONFIRM" to start.');
+	}
+	else if (x===1) {
+		alert('Choose which direction you\'d like to go.') //once inventory system is created, add explanation here
+	}
 }
 
 function forward()

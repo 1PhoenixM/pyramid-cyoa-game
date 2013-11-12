@@ -12,23 +12,26 @@
 <div style="text-align:center">
 	<h2>Choose Your Own Adventure: The Pyramid</h2>
 	<p>
-	Input name here: <input type="text" id="masterBox" size="20" value=""> <br>
-	<input type="button" value="CONFIRM" id="confirm"
-		onclick="master();">
-	<input type="button" value="HELP"
-		onclick="help();">
-	<br>
-	<input type="button" value="FORWARD" id="forward"
-		onclick="forward();">
-	<input type="button" value="LEFT" id="left"
-		onclick="left();">
-	<input type="button" value="RIGHT" id="right"
-		onclick="right();">
-	<input type="button" value="BACK" id="back"
-		onclick="back();">
-	<br>
-	<input type="button" value="INVENTORY" id="inventory"
-		onclick="inventory();">
+	
+	<div id="gameStart">
+		Input name here:
+		<input type="text" id="nameBox" size="20" value="">
+		<br>
+		<button onclick="master()" id="confirm">CONFIRM</button>
+		<button onclick="help(0)" id="startHelp">HELP</button>
+		<br>
+	</div>
+	
+	<div id="gameControls" style="display:none">
+		<button onclick="forward()" id="forward">FORWARD</button>
+		<button onclick="left()" id="left">LEFT</button>
+		<button onclick="right()" id="right">RIGHT</button>
+		<button onclick="back()" id="back">BACK</button>
+		<br>
+		<button onclick="inventory()" id="inventory">INVENTORY</button>
+		<button onclick="help(1)" id="gameHelp">HELP</button>
+	</div>
+	
 	</p>
 	<hr>
 	<div id="outputDiv"></div>

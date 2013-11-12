@@ -77,7 +77,7 @@ function help(x)
 
 function forward()
 {
-var playerName = document.getElementById('masterBox').value;
+var playerName = document.getElementById('nameBox').value;
 var stableOutput;
 stableOutput=document.getElementById('outputDiv').innerHTML;
 if (stableOutput===room2){
@@ -122,7 +122,7 @@ document.getElementById('outputDiv').innerHTML=walled;
 
 function left()
 {
-playerName = document.getElementById('masterBox').value;
+playerName = document.getElementById('nameBox').value;
 var stableOutput;
 stableOutput=document.getElementById('outputDiv').innerHTML;
 if (stableOutput==='Welcome, ' + playerName + '. It is dark here.'){
@@ -131,7 +131,7 @@ master();
 }
 else if (stableOutput==='You find a dark staircase.'){
 document.getElementById('outputDiv').innerHTML=item1;
-    if (document.getElementById('masterBox').value==='take sword')
+    if (document.getElementById('nameBox').value==='take sword')
         document.getElementById('outputDiv').innerHTML='Sword taken.';
         inventory[0]='sword';
 }
@@ -155,7 +155,7 @@ document.getElementById('outputDiv').innerHTML=deadend2;
 }
 else if (stableOutput==='There is a light ahead of you, but maybe you should check around a bit before you go.'){
 document.getElementById('outputDiv').innerHTML='There is a flashlight on the floor. Will you take it?';
-    if (document.getElementById('masterBox').value==='take flashlight')
+    if (document.getElementById('nameBox').value==='take flashlight')
         document.getElementById('outputDiv').innerHTML='Flashlight taken.';
         inventory[4]='flashlight';
 }
@@ -170,7 +170,7 @@ document.getElementById('outputDiv').innerHTML='You can\'t go that way.';
 
 function right()
 {
-playerName = document.getElementById('masterBox').value;
+playerName = document.getElementById('nameBox').value;
 var stableOutput;
 stableOutput=document.getElementById('outputDiv').innerHTML;
 if (stableOutput==='Welcome, ' + playerName + '. It is dark here.'){
@@ -208,7 +208,7 @@ document.getElementById('outputDiv').innerHTML='You can\'t go that way.';
 
 function back()
 {
-var playerName = document.getElementById('masterBox').value;
+var playerName = document.getElementById('nameBox').value;
 var stableOutput;
 stableOutput=document.getElementById('outputDiv').innerHTML;
 if (stableOutput==='Welcome, ' + playerName + '. It is dark here.'){

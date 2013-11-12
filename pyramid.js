@@ -8,7 +8,7 @@
 //to do: add a "battle system" using generation of random numbers, add another customization factor, add Story Notes
 function master()
 {
-	playerName = document.getElementById('masterBox').value;
+	playerName = document.getElementById('nameBox').value;
 	noescape='There\'s no getting past it!';
 	enemy1='A large enemy appeared! A sword would be helpful here!';
 	enemy2='A second large enemy appeared! A pickaxe would be helpful here!';

@@ -8,46 +8,51 @@
 //to do: add a "battle system" using generation of random numbers, add another customization factor, add Story Notes
 function master()
 {
-playerName = document.getElementById('masterBox').value;
-noescape='There\'s no getting past it!';
-enemy1='A large enemy appeared! A sword would be helpful here!';
-enemy2='A second large enemy appeared! A pickaxe would be helpful here!';
-enemy3='A third small enemy appears.';
-enemy4='A second small enemy appears.';
-enemy5='The first small enemy appeared!';
-death1='You have fallen into a pit of thorns! *YOU HAVE DIED*';
-death2='The walls begin to close in on you and you can\'t stop them. *YOU HAVE DIED*';
-item1='There is an ancient-looking sword mounted on the far wall. Will you take it?';
-item2='A Strange Mask lies on the floor. Will you take it?';
-item3='A pickaxe leans in the corner. Will you take it?';
-item4='There is a flashlight on the floor. Will you take it?';
-room1='Welcome, ' + playerName + '. It is dark here.';
-room2='You come across a small room.';
-room3='You find a dark staircase.';
-room4='This passage is lit by torches.';
-room5='You find a trove of treasure in this room. But it\'s probably cursed, so you leave it alone.';
-room6='You feel an ominous sense of danger.';
-room7='There is a light ahead of you, but maybe you should check around a bit before you go.';
-room8='You find a room full of what appears to be mummified dogs. You feel safe somehow.';
-room9='You enter a narrow tunnel lined with gold.';
-room10=
-room11=
-room12=
-room13=
-room14=
-room15=
-room16=
-room17=
-endroom='You made it out okay! Thank you for playing!';
-walled='You can\'t go that way.';
-pass1='It\'s a passage, so you can\'t go left.';
-deadend1='You find a deep, dark staircase spiraling down into inky blackness. You can see that the stairs end, crumbling off into the abyss. It\'s impossible to go any further.';
-deadend2='You see the outside for the first time. It\'s a beautiful vista from where you are, but you can\'t go any further.';
+	playerName = document.getElementById('masterBox').value;
+	noescape='There\'s no getting past it!';
+	enemy1='A large enemy appeared! A sword would be helpful here!';
+	enemy2='A second large enemy appeared! A pickaxe would be helpful here!';
+	enemy3='A third small enemy appears.';
+	enemy4='A second small enemy appears.';
+	enemy5='The first small enemy appeared!';
+	death1='You have fallen into a pit of thorns! *YOU HAVE DIED*';
+	death2='The walls begin to close in on you and you can\'t stop them. *YOU HAVE DIED*';
+	item1='There is an ancient-looking sword mounted on the far wall. Will you take it?';
+	item2='A Strange Mask lies on the floor. Will you take it?';
+	item3='A pickaxe leans in the corner. Will you take it?';
+	item4='There is a flashlight on the floor. Will you take it?';
+	room1='Welcome, ' + playerName + '. It is dark here.';
+	room2='You come across a small room.';
+	room3='You find a dark staircase.';
+	room4='This passage is lit by torches.';
+	room5='You find a trove of treasure in this room. But it\'s probably cursed, so you leave it alone.';
+	room6='You feel an ominous sense of danger.';
+	room7='There is a light ahead of you, but maybe you should check around a bit before you go.';
+	room8='You find a room full of what appears to be mummified dogs. You feel safe somehow.';
+	room9='You enter a narrow tunnel lined with gold.';
+	room10=
+	room11=
+	room12=
+	room13=
+	room14=
+	room15=
+	room16=
+	room17=
+	endroom='You made it out okay! Thank you for playing!';
+	walled='You can\'t go that way.';
+	pass1='It\'s a passage, so you can\'t go left.';
+	deadend1='You find a deep, dark staircase spiraling down into inky blackness. You can see that the stairs end, crumbling off into the abyss. It\'s impossible to go any further.';
+	deadend2='You see the outside for the first time. It\'s a beautiful vista from where you are, but you can\'t go any further.';
 
 if (playerName===''){
 document.getElementById('outputDiv').innerHTML='Please type your name into the box.';
 }
 else {
+
+document.getElementById('confirm').style.display = 'none'; //hides CONFIRM button if name has been inputted
+
+
+	
 document.getElementById('outputDiv').innerHTML=room1;
 if (fflag == true){
 document.getElementById('outputDiv').innerHTML=room2;

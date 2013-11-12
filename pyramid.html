@@ -1,37 +1,37 @@
 <!doctype html>
+<meta charset='utf-8'>
 <html>
 <!--Melissa Iori & Mackenzie Hummel-->
 <!-- To do: Add CSS -->
 <head>
-<script type="text/javascript" src="pyramid.js"></script>
-<title>Pyramid Game</title>
-
+	<script type="text/javascript" src="pyramid.js"></script>
+	<title>Pyramid Game</title>
 </head>
 
 <body>
 <div style="text-align:center">
-<h2>Choose Your Own Adventure: The Pyramid</h2>
-<p>
-Input name here: <input type="text" id="masterBox" size="20" value=""> <br>
-<input type="button" value="CONFIRM"
-	onclick="master();">
-<input type="button" value="HELP"
-	onclick="help();">
+	<h2>Choose Your Own Adventure: The Pyramid</h2>
+	<p>
+	Input name here: <input type="text" id="masterBox" size="20" value=""> <br>
+	<input type="button" value="CONFIRM" id="confirm"
+		onclick="master();">
+	<input type="button" value="HELP"
+		onclick="help();">
 	<br>
-<input type="button" value="FORWARD"
-	onclick="forward();">
-	<input type="button" value="LEFT"
-	onclick="left();">
-	<input type="button" value="RIGHT"
-	onclick="right();">
-	<input type="button" value="BACK"
-	onclick="back();">
+	<input type="button" value="FORWARD" id="forward"
+		onclick="forward();">
+	<input type="button" value="LEFT" id="left"
+		onclick="left();">
+	<input type="button" value="RIGHT" id="right"
+		onclick="right();">
+	<input type="button" value="BACK" id="back"
+		onclick="back();">
 	<br>
-	<input type="button" value="INVENTORY"
-	onclick="inventory();">
-</p>
-<hr>
-<div id="outputDiv"></div>
+	<input type="button" value="INVENTORY" id="inventory"
+		onclick="inventory();">
+	</p>
+	<hr>
+	<div id="outputDiv"></div>
 </div>
 </body>
 

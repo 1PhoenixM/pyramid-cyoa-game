@@ -5,6 +5,7 @@
 <!-- To do: Add CSS -->
 <head>
 	<script type="text/javascript" src="pyramid.js"></script>
+	<link rel="stylesheet" type="text/css" href="pyramid.css">
 	<title>Pyramid Game</title>
 </head>
 
@@ -23,10 +24,10 @@
 	</div>
 	
 	<div id="gameControls" style="display:none">
-		<button onclick="forward()" id="forward">FORWARD</button>
-		<button onclick="left()" id="left">LEFT</button>
-		<button onclick="right()" id="right">RIGHT</button>
-		<button onclick="back()" id="back">BACK</button>
+		<button onclick="north()" id="forward">FORWARD</button>
+		<button onclick="west()" id="left">LEFT</button>
+		<button onclick="east()" id="right">RIGHT</button>
+		<button onclick="south()" id="back">BACK</button>
 		<br>
 		<button onclick="inventory()" id="inventory">INVENTORY</button>
 		<button onclick="help(1)" id="gameHelp">HELP</button>
@@ -35,6 +36,7 @@
 	</p>
 	<hr>
 	<div id="outputDiv"></div>
+	<div id="currentRoom" style="display:none" value=""></div>
 </div>
 </body>
 

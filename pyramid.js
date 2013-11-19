@@ -1,9 +1,8 @@
-//I combined elements from both of the backups.
-//The player is now an object, so playerName is now player.pname and will add more properties of the player later on
-/*Idea: Instead of having a default "you can't go that way" in an else rule (which would mess up the output), I put in an alert statement that 
-tells the player to go back and try another path.*/
+//added: another customization factor: personalities which affect the content of the notes, based on what kind of ruler the player was in their past life. -MI
 walled="There's a wall or other impass blocking you. Try another way.";
-	
+	function hideBox() {
+	document.getElementById('personality').style.display ='none';
+	}
 function changeRoom(newRoom){ //changes room according to player movement
 	var x; //room description
 	var room=newRoom; //takes parameter into the function
@@ -70,13 +69,19 @@ function changeRoom(newRoom){ //changes room according to player movement
 			x="Passed the Strange Mask up. It disintegrates. Good thing, too - it was cursed.";
 			break;
 		case 'note2':
-			x="NOTE 2";
+			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: the kindness of " + player.pname + " was known everywhere. ";}
+				else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: the conquests of " + player.pname + " will be known throughout time. ";}
+				else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the wrath of " + player.pname + " will not be forgotten. ";}
 			break;
 		case 'note3':
-			x="NOTE 3";
+			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: here we have left the belongings of " + player.pname + ". We hope what they have given in charity will be paid back in full in the afterlife. ";}
+				else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: the battle trappings of " + player.pname + " lie here with their master for all time. ";}
+				else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the vast riches of " + player.pname + " rest here. May the gods help thee who disturb them. ";}
 			break;
 		case 'note4':
-			x="NOTE 4";
+			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", our just ruler and savior. ";}
+			else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", our ruler and conqueror of many, who sacrificed for all. ";}
+			else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", a ruler greatly feared, but loved. ";}
 			break;
   		case 'staircase':
     			x="You find a dark staircase.";
@@ -88,7 +93,9 @@ function changeRoom(newRoom){ //changes room according to player movement
     			x="This passage is lit by torches.";
     			break;
     		case 'note1':
-    			x="There are interesting engravings on the wall.";
+    			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: glory to the kind and generous " + player.pname + ". ";}
+				else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: remembrance of " + player.pname + "\'s deeds. ";}
+				else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the inimitable strength of " + player.pname + ". ";}
     			break;
   		}
 	document.getElementById('outputDiv').innerHTML=x; //displays new room description
@@ -114,16 +121,25 @@ function master(){
 	player = {
 	};
 	player['pname']=document.getElementById('nameBox').value;
+	player['pers']=document.getElementById('persBox').value;
 	if (player.pname===''){
 		document.getElementById('outputDiv').innerHTML='Please type your name into the box.';
 	}
-	else {
-		document.getElementById('gameStart').style.display = 'none'; //hides nameBox and CONFIRM button
-		document.getElementById('gameControls').style.display = 'block'; //hides CONFIRM button if name has been inputted		
+  else if(player.pname!==''){
+  document.getElementById('namecontrol').style.display = 'none';
+  
+		document.getElementById('personality').style.display = 'block';
+	if (player.pers==='benevolent' || player.pers==='brave' || player.pers==='powerful'){
+    document.getElementById('gameStart').style.display = 'none';
+		document.getElementById('gameControls').style.display = 'block'; //hides CONFIRM button if name has been inputted
+		document.getElementById('outputDiv').innerHTML = '';
 		document.getElementById('outputDiv').innerHTML="Welcome, " + player.pname + ". It is dark in here." //start room is now context sensitive and will only welcome the player once		
 		document.getElementById('currentRoom').value='start'; //hidden div in html tells direction functions where the player is on the map. value 'start' is the first room.
-	}
+		}
+	if (player.pers==='') {document.getElementById('outputDiv').innerHTML = '';}
 }
+}
+
 
 
 function north() { //user moves forward
@@ -421,7 +437,7 @@ else {return;}
 
 function help(x){ //changes help message depending on if game has started or not
 	if (x===0) {	
-		alert('Enter your name in the box above and click "CONFIRM" to start.');
+		alert('Enter your name into the first box prompt, or personality (benevolent, brave, or powerful) into the second box prompt and click "CONFIRM" to start.');
 	}
 	else if (x===1) {
 		alert('Choose which direction you\'d like to go.') //once inventory system is created, add explanation here

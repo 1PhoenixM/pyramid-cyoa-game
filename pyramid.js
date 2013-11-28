@@ -1,8 +1,12 @@
-//added: another customization factor: personalities which affect the content of the notes, based on what kind of ruler the player was in their past life. -MI
+//V1.0 BETA
+//Left to do: bugfixes, images, CSS, indentation, comments
+//Known bugs: enemies all operate at same chance value for now
+//second boss lets you through without item
+//if you decline to fight the first boss, progresscontrol buttons are removed and you're stuck (need to be returned to block)
+
 walled="There's a wall or other impass blocking you. Try another way.";
-	function hideBox() {
-	document.getElementById('personality').style.display ='none';
-	}
+playerinventory=[];
+
 function changeRoom(newRoom){ //changes room according to player movement
 	var x; //room description
 	var room=newRoom; //takes parameter into the function
@@ -11,35 +15,47 @@ function changeRoom(newRoom){ //changes room according to player movement
     			x="It is dark in here.";
     			break;
 		case 'swordboss':
-			x="A large enemy appeared! A sword would be helpful here!";
+			x="A large enemy appeared! A sword would be helpful here! Will you fight?</br>";
+			itemcheck();
+			enemyfight(6);
+			document.getElementById('fightConfirm').style.display ='block';
 			break;
 		case 'axeboss':
-			x="A second large enemy appeared! A pickaxe would be helpful here!";
+			x="A second large enemy appeared! A pickaxe would be helpful here! Will you fight?</br>";
+			itemcheck();
+			enemyfight(10);
+			document.getElementById('fightConfirm').style.display ='block';
 			break;
 		case 'enemy1':
-			x="The first small enemy appeared!";
+			x="The first small enemy appeared! Will you fight?</br>";
+			enemyfight(3);
+			document.getElementById('fightConfirm').style.display ='block';
 			break;
 		case 'enemy2':
-			x="A second small enemy appears.";
+			x="A second small enemy appears. Will you fight?</br>";
+			enemyfight(6);
+			document.getElementById('fightConfirm').style.display ='block';
 			break;
 		case 'enemy3':
-			x="A third small enemy appears.";
+			x="A third small enemy appears. Will you fight?</br>";
+			enemyfight(7);
+			document.getElementById('fightConfirm').style.display ='block';
 			break;
 		case 'swordroom':
 			x="There is an ancient-looking sword mounted on the far wall. Will you take it?";
-			itemhandler();
+			document.getElementById('itemConfirm').style.display ='block';
 			break;
 		case 'axeroom':
 			x="A pickaxe leans in the corner. Will you take it?";
-			itemhandler();
+			document.getElementById('itemConfirm').style.display ='block';
 			break;
 		case 'maskroom':
 			x="A Strange Mask lies on the floor. Will you take it?";
-			itemhandler();
+			document.getElementById('itemConfirm').style.display ='block';
 			break;
 		case 'lightroom':
 			x="There is a flashlight on the floor. Will you take it?";
-			itemhandler();
+			document.getElementById('itemConfirm').style.display ='block';
 			break;
 		case 'trove':
 			x="You find a trove of treasure in this room. But it\'s probably cursed, so you leave it alone.";
@@ -127,8 +143,7 @@ function master(){
 	}
   else if(player.pname!==''){
   document.getElementById('namecontrol').style.display = 'none';
-  
-		document.getElementById('personality').style.display = 'block';
+  document.getElementById('personality').style.display = 'block';
 	if (player.pers==='benevolent' || player.pers==='brave' || player.pers==='powerful'){
     document.getElementById('gameStart').style.display = 'none';
 		document.getElementById('gameControls').style.display = 'block'; //hides CONFIRM button if name has been inputted
@@ -329,7 +344,7 @@ function east() { //user moves right
 }
 
 function backwards() { //user moves back one room to the previous room
-	currentRoom=document.getElementById('currentRoom').value;
+  currentRoom=document.getElementById('currentRoom').value;
 	if (currentRoom=='staircase') {
 		east();	
 	}
@@ -413,27 +428,72 @@ function backwards() { //user moves back one room to the previous room
 	}
 }
 
-function inventory() {
-	alert(playerinventory);
+
+function itemno(){
+document.getElementById('outputDiv').innerHTML="Decided not to take it.";
+document.getElementById('itemConfirm').style.display = 'none';
 }
-
-function smallenemy(){}
-
-function bossbattle(){}
 
 function itemhandler(){
-playerinventory=[];
+document.getElementById('outputDiv').innerHTML="Taken. Check inventory.";
+document.getElementById('itemConfirm').style.display = 'none';
 currentRoom=document.getElementById('currentRoom').value;
-if (currentRoom='swordroom')
-	playerinventory[0]='sword';
-else if (currentRoom='axeroom')
-	playerinventory[1]='pick-axe';
-else if (currentRoom='maskroom')
-	playerinventory[2]='strange mask';
-else if (currentRoom='lightroom')
-	playerinventory[3]='flashlight';
+if (currentRoom==='swordroom'){
+	playerinventory[0]='sword';}
+else if (currentRoom==='axeroom'){
+	playerinventory[1]='pick-axe';}
+else if (currentRoom==='maskroom'){
+	playerinventory[2]='strange mask';}
+else if (currentRoom==='lightroom'){
+	playerinventory[3]='flashlight';}
 else {return;}
 }
+
+function inventory() {
+	if (playerinventory[0]==='sword' &&  playerinventory[1]!=='pick-axe'){
+	alert(playerinventory[0]);
+	}
+	else if (playerinventory[0]==='sword' && playerinventory[1]==='pick-axe' && playerinventory[3]!=='flashlight') {
+alert(playerinventory[0]+', '+playerinventory[1]);
+}
+	else if (playerinventory[0]==='sword' && playerinventory[1]==='pick-axe' && playerinventory[3]==='flashlight') {
+alert(playerinventory[0]+', '+playerinventory[1]+', '+playerinventory[3]);
+}
+}
+
+function enemyfight(chance){
+var chance, enemyChance=Math.floor((Math.random()*chance)+1);
+if (enemyChance!==2){
+enemyChance=Math.floor((Math.random()*chance)+1);
+document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML+'Missed! So close! Attack again?</br>';
+}
+else{
+document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML+'You defeated it!</br>';
+document.getElementById('progresscontrol').style.display='block';
+document.getElementById('fightConfirm').style.display='none';
+}
+}
+
+
+function peace(){
+document.getElementById('outputDiv').innerHTML="You ran away to fight another day...";
+document.getElementById('fightConfirm').style.display = 'none';
+}
+
+function itemcheck(){
+if (playerinventory[0]!=='sword') {
+document.getElementById('outputDiv').innerHTML="It's no use... a sword might help!";
+document.getElementById('fightConfirm').style.display='none';
+document.getElementById('progresscontrol').style.display='none';
+}
+else if (playerinventory[0]==='sword' && playerinventory[1]!=='pick-axe' && document.getElementById('outputDiv').innerHTML==="A second large enemy appeared! A pickaxe would be helpful here! Will you fight?") {
+document.getElementById('outputDiv').innerHTML="It's no use... a pick-axe might help!";
+document.getElementById('fightConfirm').style.display='none';
+document.getElementById('progresscontrol').style.display='none';
+}
+else{return;}
+}
+
 
 function help(x){ //changes help message depending on if game has started or not
 	if (x===0) {	

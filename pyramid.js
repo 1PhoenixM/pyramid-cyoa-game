@@ -24,14 +24,18 @@ function changeRoom(newRoom){ //changes room according to player movement
 			if(playerinventory[3]==='flashlight'){
 			x="It is dark in here. Would you like to use the flashlight?";
 			document.getElementById('itemConfirm').style.display ='block';
+			document.getElementById('roomImg').src = 'images/start.png'
 			}
-			else{x="It is dark in here.";}
+			else{x="It is dark in here.";
+			document.getElementById('roomImg').src = 'images/start.png'
+			}
 			break;
 		case 'swordboss':
 			x="A figure in bandages appeared! A sword might be helpful here! Will you fight?</br>";
 			itemcheck();
 			document.getElementById('fightConfirm').style.display ='block';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/swordboss.png'
 			if (bossflag1===false){
 			document.getElementById('progresscontrol').style.display ='none';
 			}
@@ -44,6 +48,7 @@ function changeRoom(newRoom){ //changes room according to player movement
 			itemcheck();
 			document.getElementById('fightConfirm').style.display ='block';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/axeboss.png'
 			if (bossflag2===false){
 			document.getElementById('progresscontrol').style.display ='none';
 			}
@@ -55,23 +60,28 @@ function changeRoom(newRoom){ //changes room according to player movement
 			x="A tiny tarantula appeared! Will you fight?</br>";
 			document.getElementById('fightConfirm').style.display ='block';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/enemy1.png'
 			break;
 		case 'enemy2':
 			x="A small cobra appeared. Will you fight?</br>";
 			document.getElementById('fightConfirm').style.display ='block';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/enemy2.png'
 			break;
 		case 'enemy3':
 			x="An angry rat appears. Will you fight?</br>";
 			document.getElementById('fightConfirm').style.display ='block';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/enemy3.png'
 			break;
 		case 'swordroom':
 			document.getElementById('fightConfirm').style.display ='none';
 			if(playerinventory[0]==='sword'){
 			x="It appears to be an old armory... you already took the sword, so there's not much to see.";
+			document.getElementById('roomImg').src = 'images/swordroomempty.png'
 			}
 			else{x="There is an ancient-looking sword mounted on the far wall. Will you take it?";
+			document.getElementById('roomImg').src = 'images/swordroom.png'
 			document.getElementById('itemConfirm').style.display ='block';
 			}
 			break;
@@ -79,64 +89,77 @@ function changeRoom(newRoom){ //changes room according to player movement
 			document.getElementById('fightConfirm').style.display ='none';
 			if(playerinventory[1]==='pick-axe'){
 			x="There were people here more recently than you would have guessed... you already took the pick-axe, so there's not much to see.";
+			document.getElementById('roomImg').src = 'images/axeroomempty.png'
 			}
 			else{x="A pickaxe leans in the corner. Will you take it?";
 			document.getElementById('itemConfirm').style.display ='block';
+			document.getElementById('roomImg').src = 'images/axeroom.png'
 			}
 			break;
 		case 'maskroom':
-			x="A Strange Mask lies on the floor. Will you take it?";
+			x="A Strange Mask hangs on the wall. Will you take it?";
 			document.getElementById('itemConfirm').style.display ='block';
 			document.getElementById('fightConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/maskroom.png'
 			break;
 		case 'lightroom':
 			document.getElementById('fightConfirm').style.display ='none';
 			if(playerinventory[3]==='flashlight'){
 			x="There were definitely people in this area very recently. Maybe the flashlight could help you illuminate some dark secrets of your own.";
+			document.getElementById('roomImg').src = 'images/lightroomempty.png'
 			}
 			else{x="There is a flashlight on the floor. Will you take it?";
 			document.getElementById('itemConfirm').style.display ='block';
+			document.getElementById('roomImg').src = 'images/lightroom.png'
 			}
 			break;
 		case 'trove':
 			x="You find a trove of treasure in this room. But it\'s probably cursed, so you leave it alone.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/trove.png'
 			break;
 		case 'danger':
 			x="You feel an ominous sense of danger.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
 			document.getElementById('progresscontrol').style.display='block';
+			document.getElementById('roomImg').src = 'images/danger.png'
 			break;
 		case 'almost':
 			x="There is a light ahead of you, but maybe you should check around a bit before you go.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/almost.png'
 			break;
 		case 'dogs':
 			x="You find a room full of what appears to be mummified dogs. You feel safe somehow.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/dogs.png'
 			break;
 		case 'goldtunnel':
 			x="You enter a narrow tunnel lined with gold.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/goldtunnel.png'
 			break;
 		case 'finish':
 			x="You made it out okay! Thank you for playing!";
+			document.getElementById('roomImg').src = 'images/finish.png'
 			death(4);
 			break;
 		case 'abyss':
 			x="You find a deep, dark staircase spiraling down into inky blackness. You can see that the stairs end, crumbling off into the abyss. It\'s impossible to go any further.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/abyss.png'
 			break;
 		case 'vista':
 			x="You see the outside for the first time. It\'s a beautiful vista from where you are, but you can\'t go any further.";
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
+			document.getElementById('roomImg').src = 'images/vista.png'
 			break;
 		case 'maskreject':
 			x="Passed the Strange Mask up. It disintegrates. Good thing, too - it was cursed.";
@@ -147,6 +170,7 @@ function changeRoom(newRoom){ //changes room according to player movement
 			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: the kindness of " + player.pname + " was known everywhere. ";}
 			else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: the conquests of " + player.pname + " will be known throughout time. ";}
 			else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the wrath of " + player.pname + " will not be forgotten. ";}
+			document.getElementById('roomImg').src = 'images/note2.png'			
 			break;
 		case 'note3':
 			document.getElementById('fightConfirm').style.display ='none';
@@ -154,6 +178,7 @@ function changeRoom(newRoom){ //changes room according to player movement
 			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: here we have left the belongings of " + player.pname + ". We hope what they have given in charity will be paid back in full in the afterlife. ";}
 			else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: the battle trappings of " + player.pname + " lie here with their master for all time. ";}
 			else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the vast riches of " + player.pname + " rest here. May the gods help thee who disturb them. ";}
+			document.getElementById('roomImg').src = 'images/note3.png'
 			break;
 		case 'note4':
 			document.getElementById('fightConfirm').style.display ='none';
@@ -161,22 +186,26 @@ function changeRoom(newRoom){ //changes room according to player movement
 			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", our just ruler and savior. ";}
 			else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", our ruler and conqueror of many, who sacrificed for all. ";}
 			else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: Here lies " + player.pname + ", a ruler greatly feared, but loved. ";}
+			document.getElementById('roomImg').src = 'images/note4.png'			
 			break;
 		case 'staircase':
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
 			x="You find a dark staircase.";
+			document.getElementById('roomImg').src = 'images/staircase.png'
 			break;
 		case 'smallroom':
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
 			x="You come across a small room.";
+			document.getElementById('roomImg').src = 'images/smallroom.png'
 			break;
 		case 'passage':
 			document.getElementById('fightConfirm').style.display ='none';
 			document.getElementById('itemConfirm').style.display ='none';
 			document.getElementById('progresscontrol').style.display='block';
 			x="This passage is lit by torches.";
+			document.getElementById('roomImg').src = 'images/passage.png'
 			break;
 		case 'note1':
 			document.getElementById('fightConfirm').style.display ='none';
@@ -184,6 +213,7 @@ function changeRoom(newRoom){ //changes room according to player movement
 			if(player.pers==='benevolent'){x="There are interesting engravings on the wall. This one reads: glory to the kind and generous " + player.pname + ". ";}
 			else if(player.pers==='brave'){x="There are interesting engravings on the wall. This one reads: remembrance of " + player.pname + "\'s deeds. ";}
 			else if(player.pers==='powerful'){x="There are interesting engravings on the wall. This one reads: the inimitable strength of " + player.pname + ". ";}
+			document.getElementById('roomImg').src = 'images/note1.png'			
 			break;
 		}
 	document.getElementById('outputDiv').innerHTML=x; //displays new room description
@@ -191,22 +221,27 @@ function changeRoom(newRoom){ //changes room according to player movement
 
 function death(how) { //chooses what type of death the player experiences and resets the game
 	if (how===0) {
-		document.getElementById('outputDiv').innerHTML="You have fallen into a pit of thorns! *YOU HAVE DIED*";        
+		document.getElementById('outputDiv').innerHTML="You have fallen into a pit of thorns! *YOU HAVE DIED*";
+		document.getElementById('roomImg').src = 'images/death0.png' 
 	}
 	else if (how===1) {
 		document.getElementById('outputDiv').innerHTML="The walls begin to close in on you and you can\'t stop them. *YOU HAVE DIED*";
+		document.getElementById('roomImg').src = 'images/death1.png' 
 	}
 	else if (how===2) {
 		document.getElementById('outputDiv').innerHTML="The room is filled with deadly snakes. *YOU HAVE DIED*";
+		document.getElementById('roomImg').src = 'images/death2.png' 
 	}
 	else if (how===3) {
 		document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML+"Bad idea - the strange mask was cursed. You meet with an unearthly fate... *YOU HAVE DIED*";
+		document.getElementById('roomImg').src = 'images/death3.png' 	
 	}
 	else if (how===4) {
 		document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML;
 	}
 	else if (how===5) {
 		document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML+"The enemy overpowered you... *YOU HAVE DIED*";
+		document.getElementById('roomImg').src = 'images/death5.png' 
 	}
 	document.getElementById('retry').style.display='block';
 	document.getElementById('gameControls').style.display='none';
@@ -234,6 +269,7 @@ function master(){ //starts the game
 			document.getElementById('outputDiv').innerHTML = '';
 			document.getElementById('outputDiv').innerHTML="Welcome, " + player.pname + ". It is dark in here." //start room is now context sensitive and will only welcome the player once                
 			document.getElementById('currentRoom').value='start'; //hidden div in html tells direction functions where the player is on the map. value 'start' is the first room.
+			document.getElementById('roomImg').src = 'images/start.png'		
 		}
 		
 	}
@@ -368,7 +404,7 @@ function east() { //user moves right
 	}
 	else if (currentRoom=='enemy1') {
 		changeRoom('smallroom');
-		document.getElementById('currentRoom').value='smallroom';        
+		document.getElementById('currentRoom').value='smallroom';      
 	}
 	else if (currentRoom=='smallroom') {
 		changeRoom('note1')
@@ -376,7 +412,7 @@ function east() { //user moves right
 	}
 	else if (currentRoom=='swordroom') {
 		changeRoom('staircase');
-		document.getElementById('currentRoom').value='staircase';        
+		document.getElementById('currentRoom').value='staircase';      
 	}
 	else if (currentRoom=='abyss') {
 		changeRoom('swordboss');
@@ -531,9 +567,11 @@ function itemhandler(){ //adds items to array if taken
 	
 	if (currentRoom==='swordroom'){
 		playerinventory[0]='sword';
+		document.getElementById('roomImg').src = 'images/swordroomempty.png'
 	}
 	else if (currentRoom==='axeroom'){
 		playerinventory[1]='pick-axe';
+		document.getElementById('roomImg').src = 'images/axeroomempty.png'
 	}
 	else if (currentRoom==='maskroom'){
 		playerinventory[2]='strange mask';
@@ -541,9 +579,11 @@ function itemhandler(){ //adds items to array if taken
 	}
 	else if (currentRoom==='lightroom'){
 		playerinventory[3]='flashlight';
+		document.getElementById('roomImg').src = 'images/lightroomempty.png'
 	}
 	else if (currentRoom==='start'){
 		document.getElementById('outputDiv').innerHTML="The room has become illuminated. On the wall is a brilliant mural depicting yourself, and your loyal canine companions.";
+		document.getElementById('roomImg').src = 'images/startlight.png'	
 	}
 	else {
 		return;
@@ -604,6 +644,12 @@ function enemyfight(chance){ //handles enemy encounters
 	}
 	else{
 		document.getElementById('outputDiv').innerHTML=document.getElementById('outputDiv').innerHTML+'You defeated it!</br>';
+			if (currentRoom==='enemy1') {
+				document.getElementById('roomImg').src = 'images/enemy1defeat.png'
+			}
+			else if (currentRoom==='swordboss') {
+				document.getElementById('roomImg').src = 'images/swordbossdeath.png'
+			}
 		document.getElementById('progresscontrol').style.display='block';
 		document.getElementById('fightConfirm').style.display='none';
 		if (currentRoom==='swordboss'){
